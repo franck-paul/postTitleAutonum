@@ -18,7 +18,7 @@ $this->registerModule(
     'postTitleAutonum',                         // Name
     'Auto numbering of duplicate titles',       // Description
     'Franck Paul',                              // Author
-    '0.1',                                      // Version
+    '0.2',                                      // Version
     [
         'requires'    => [['core', '2.13']],                                // Dependencies
         'permissions' => 'admin',                                           // Permissions

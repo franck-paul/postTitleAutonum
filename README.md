@@ -1,9 +1,6 @@
 postTitleAutonum plugin for Dotclear 2
 ============================
 
-This plugin auto numbering duplicate entries titles at creation (only)
+This plugin suggests auto numbering for duplicate entries titles (on entry creation form)
 
-The author should verify the modified title and URL provided by this plugin before publishing it.
-
-Author: Franck Paul
-Web: https://open-time.net/
+Author: [Franck Paul](https://open-time.net/)
