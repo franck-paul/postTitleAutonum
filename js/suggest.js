@@ -3,7 +3,7 @@
 
 $(function () {
   dotclear.pta = dotclear.getData('pta_options');
-  dotclear.pta.previous_title = '';
+  dotclear.pta.suggest = '';
 
   $('#post_title').on('blur', function () {
     const $input = $(this);
@@ -26,11 +26,14 @@ $(function () {
             if (ret) {
               // suggest -> new title
               const suggest = $('rsp>tpa', data).attr('suggest');
-              // msg -> question
-              const msg = $('rsp>tpa', data).attr('msg');
-              // Suggests the new title
-              if (window.confirm(msg)) {
-                $input.val(suggest);
+              if (dotclear.pta.suggest !== suggest) {
+                dotclear.pta.suggest = suggest;
+                // msg -> question
+                const msg = $('rsp>tpa', data).attr('msg');
+                // Suggests the new title
+                if (window.confirm(msg)) {
+                  $input.val(suggest);
+                }
               }
             }
           }
@@ -41,6 +44,8 @@ $(function () {
         .always(function () {
           // Nothing here
         });
+    } else {
+      dotclear.pta.suggest = '';
     }
   });
 });
