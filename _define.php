@@ -23,8 +23,10 @@ $this->registerModule(
         'requires'    => [['core', '2.13']],                                // Dependencies
         'permissions' => 'admin',                                           // Permissions
         'type'        => 'plugin',                                          // Type
-        'details'     => 'https://open-time.net/?q=postTitleAutonum',       // Details URL
-        'support'     => 'https://github.com/franck-paul/postTitleAutonum', // Support URL
-        'settings'    => ['blog' => '#params.pta']                          // Settings
+        'settings'    => ['blog' => '#params.pta'],                         // Settings
+
+        'details'    => 'https://open-time.net/?q=postTitleAutonum',       // Details URL
+        'support'    => 'https://github.com/franck-paul/postTitleAutonum', // Support URL
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/postTitleAutonum/main/dcstore.xml'
     ]
 );
