@@ -1,8 +1,8 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="postTitleAutonum">
-    <name>Auto numbering of duplicate titles</name>
+    <name>postTitleAutonum</name>
     <version>0.2</version>
-    <author>Auto numbering of duplicate titles</author>
+    <author>Franck Paul</author>
     <desc>Auto numbering of duplicate titles</desc>
     <file>https://github.com/franck-paul/postTitleAutonum/releases/download/0.2/plugin-postTitleAutonum-0.2.zip</file>
     <da:dcmin>2.13</da:dcmin>
