@@ -16,33 +16,33 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 
 class ptaRest
 {
-    private static function getTitle($core, $title, $type = 'post')
+    private static function getTitle($title, $type = 'post')
     {
-        $strReq = 'SELECT post_title FROM ' . $core->blog->prefix . 'post ' .
-        "WHERE post_title = '" . $core->blog->con->escape($title) . "' " .
-        "AND post_type = '" . $core->blog->con->escape($type) . "' " .
-        "AND blog_id = '" . $core->blog->con->escape($core->blog->id) . "' " .
+        $strReq = 'SELECT post_title FROM ' . dcCore::app()->blog->prefix . 'post ' .
+        "WHERE post_title = '" . dcCore::app()->blog->con->escape($title) . "' " .
+        "AND post_type = '" . dcCore::app()->blog->con->escape($type) . "' " .
+        "AND blog_id = '" . dcCore::app()->blog->con->escape(dcCore::app()->blog->id) . "' " .
         'ORDER BY post_title DESC';
 
-        $rs = $core->blog->con->select($strReq);
+        $rs = dcCore::app()->blog->con->select($strReq);
 
         if (!$rs->isEmpty()) {
             // Try to find similar titles (beginning with)
-            if ($core->blog->con->syntax() == 'mysql') {
-                $clause = "REGEXP '^" . $core->blog->con->escape(preg_quote($title)) . " '";
-            } elseif ($core->blog->con->driver() == 'pgsql') {
-                $clause = "~ '^" . $core->blog->con->escape(preg_quote($title)) . " '";
+            if (dcCore::app()->blog->con->syntax() == 'mysql') {
+                $clause = "REGEXP '^" . dcCore::app()->blog->con->escape(preg_quote($title)) . " '";
+            } elseif (dcCore::app()->blog->con->driver() == 'pgsql') {
+                $clause = "~ '^" . dcCore::app()->blog->con->escape(preg_quote($title)) . " '";
             } else {
                 $clause = "LIKE '" .
-                $core->blog->con->escape(preg_replace(['%', '_', '!'], ['!%', '!_', '!!'], $title)) . " ' ESCAPE '!'";  // @phpstan-ignore-line
+                dcCore::app()->blog->con->escape(preg_replace(['%', '_', '!'], ['!%', '!_', '!!'], $title)) . " ' ESCAPE '!'";  // @phpstan-ignore-line
             }
-            $strReq = 'SELECT post_title FROM ' . $core->blog->prefix . 'post ' .
+            $strReq = 'SELECT post_title FROM ' . dcCore::app()->blog->prefix . 'post ' .
             'WHERE post_title ' . $clause . ' ' .
-            "AND post_type = '" . $core->blog->con->escape($type) . "' " .
-            "AND blog_id = '" . $core->blog->con->escape($core->blog->id) . "' " .
+            "AND post_type = '" . dcCore::app()->blog->con->escape($type) . "' " .
+            "AND blog_id = '" . dcCore::app()->blog->con->escape(dcCore::app()->blog->id) . "' " .
             'ORDER BY post_title DESC ';
 
-            $rs = $core->blog->con->select($strReq);
+            $rs = dcCore::app()->blog->con->select($strReq);
             $a  = [];
             while ($rs->fetch()) {
                 $a[] = $rs->post_title;
@@ -50,13 +50,13 @@ class ptaRest
 
             natsort($a);
             if (preg_match('/(.*?)([0-9]+)$/', end($a), $m)) {
-                $i = (integer) $m[2];
+                $i = (int) $m[2];
             } else {
                 $i = 1;
             }
 
             if ($i > 0) {
-                $prefix = $core->blog->settings->pta->use_prefix ? ($core->blog->settings->pta->prefix ?: __('number')) : '';
+                $prefix = dcCore::app()->blog->settings->pta->use_prefix ? (dcCore::app()->blog->settings->pta->prefix ?: __('number')) : '';
                 $title .= ' ' . $prefix . ($i + 1);
             }
         }
@@ -64,19 +64,19 @@ class ptaRest
         return $title;
     }
 
-    public static function suggestTitle($core, $get)
+    public static function suggestTitle($get)
     {
-        $title = !empty($get['title']) ? $get['title'] : '';
-        $type  = !empty($get['type']) ? $get['type'] : 'post';
+        $title = $get['title'] ?? '';
+        $type  = $get['type']  ?? 'post';
 
-        $rsp = new xmlTag('tpa');
+        $suggest = self::getTitle($title, $type);
 
-        $suggest = self::getTitle($core, $title, $type);
+        $payload = [
+            'ret'     => ($title !== $suggest),
+            'msg'     => sprintf(__('The “%s” title is already used, would you replace it by “%s”?'), $title, $suggest),
+            'suggest' => $suggest,
+        ];
 
-        $rsp->ret     = ($title !== $suggest);
-        $rsp->msg     = sprintf(__('The “%s” title is already used, would you replace it by “%s”?'), $title, $suggest);
-        $rsp->suggest = $suggest;
-
-        return $rsp;
+        return $payload;
     }
 }

@@ -18,15 +18,15 @@ $this->registerModule(
     'postTitleAutonum',                         // Name
     'Auto numbering of duplicate titles',       // Description
     'Franck Paul',                              // Author
-    '0.2',                                      // Version
+    '0.3',                                      // Version
     [
-        'requires'    => [['core', '2.13']],                                // Dependencies
+        'requires'    => [['core', '2.23']],                                // Dependencies
         'permissions' => 'admin',                                           // Permissions
         'type'        => 'plugin',                                          // Type
         'settings'    => ['blog' => '#params.pta'],                         // Settings
 
         'details'    => 'https://open-time.net/?q=postTitleAutonum',       // Details URL
         'support'    => 'https://github.com/franck-paul/postTitleAutonum', // Support URL
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/postTitleAutonum/main/dcstore.xml'
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/postTitleAutonum/main/dcstore.xml',
     ]
 );

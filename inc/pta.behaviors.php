@@ -18,18 +18,16 @@ class ptaBehaviors
 {
     private static function entryHeaders($type = 'post')
     {
-        global $core;
+        dcCore::app()->blog->settings->addNameSpace('pta');
 
-        $core->blog->settings->addNameSpace('pta');
-
-        if ($core->blog->settings->pta->enabled) {
+        if (dcCore::app()->blog->settings->pta->enabled) {
             $pta_options = [
-                'post_type' => $type
+                'post_type' => $type,
             ];
 
             return
             dcPage::jsJson('pta_options', $pta_options) .
-            dcPage::jsLoad(urldecode(dcPage::getPF('postTitleAutonum/js/suggest.js')), $core->getVersion('series'));
+            dcPage::jsModuleLoad('postTitleAutonum/js/suggest.js', dcCore::app()->getVersion('series'));
         }
     }
 
@@ -43,7 +41,7 @@ class ptaBehaviors
         return self::entryHeaders('page');
     }
 
-    public static function adminBlogPreferencesForm($core, $settings)
+    public static function adminBlogPreferencesForm($core = null, $settings)
     {
         $settings->addNameSpace('pta');
         echo
