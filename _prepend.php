@@ -14,8 +14,10 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-$__autoload['ptaBehaviors'] = __DIR__ . '/inc/pta.behaviors.php';
-$__autoload['ptaRest']      = __DIR__ . '/_services.php';
+Clearbricks::lib()->autoload([
+    'ptaBehaviors' => __DIR__ . '/inc/pta.behaviors.php',
+    'ptaRest'      => __DIR__ . '/_services.php',
+]);
 
 // Public, XML/RPC and Admin mode
 
@@ -24,10 +26,10 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 }
 // Admin mode only
 
-dcCore::app()->addBehavior('adminBlogPreferencesForm', ['ptaBehaviors', 'adminBlogPreferencesForm']);
-dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', ['ptaBehaviors', 'adminBeforeBlogSettingsUpdate']);
+dcCore::app()->addBehavior('adminBlogPreferencesFormV2', [ptaBehaviors::class, 'adminBlogPreferencesForm']);
+dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', [ptaBehaviors::class, 'adminBeforeBlogSettingsUpdate']);
 
-dcCore::app()->addBehavior('adminPostHeaders', ['ptaBehaviors', 'postHeaders']);
-dcCore::app()->addBehavior('adminPageHeaders', ['ptaBehaviors', 'pageHeaders']);
+dcCore::app()->addBehavior('adminPostHeaders', [ptaBehaviors::class, 'postHeaders']);
+dcCore::app()->addBehavior('adminPageHeaders', [ptaBehaviors::class, 'pageHeaders']);
 
-dcCore::app()->rest->addFunction('suggestTitle', ['ptaRest', 'suggestTitle']);
+dcCore::app()->rest->addFunction('suggestTitle', [ptaRest::class, 'suggestTitle']);

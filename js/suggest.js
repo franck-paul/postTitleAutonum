@@ -15,18 +15,22 @@ window.addEventListener('load', () => {
       dotclear.services(
         'suggestTitle',
         (data) => {
-          const response = JSON.parse(data);
-          if (response?.success) {
-            if (
-              response?.payload.ret &&
-              dotclear.pta.suggest !== response.payload.suggest &&
-              window.confirm(response.payload.msg)
-            ) {
-              input.value = response.payload.suggest;
+          try {
+            const response = JSON.parse(data);
+            if (response?.success) {
+              if (
+                response?.payload.ret &&
+                dotclear.pta.suggest !== response.payload.suggest &&
+                window.confirm(response.payload.msg)
+              ) {
+                input.value = response.payload.suggest;
+              }
+            } else {
+              console.log(dotclear.debug && response?.message ? response.message : 'Dotclear REST server error');
+              return;
             }
-          } else {
-            console.log(dotclear.debug && response?.message ? response.message : 'Dotclear REST server error');
-            return;
+          } catch (e) {
+            console.log(e);
           }
         },
         (error) => {

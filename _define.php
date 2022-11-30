@@ -15,18 +15,20 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'postTitleAutonum',                         // Name
-    'Auto numbering of duplicate titles',       // Description
-    'Franck Paul',                              // Author
-    '0.3.1',
+    'postTitleAutonum',
+    'Auto numbering of duplicate titles',
+    'Franck Paul',
+    '1.0',
     [
-        'requires'    => [['core', '2.23']],                                // Dependencies
-        'permissions' => 'admin',                                           // Permissions
-        'type'        => 'plugin',                                          // Type
-        'settings'    => ['blog' => '#params.pta'],                         // Settings
+        'requires'    => [['core', '2.24']],
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_ADMIN,
+        ]),
+        'type'     => 'plugin',
+        'settings' => ['blog' => '#params.pta'],
 
-        'details'    => 'https://open-time.net/?q=postTitleAutonum',       // Details URL
-        'support'    => 'https://github.com/franck-paul/postTitleAutonum', // Support URL
+        'details'    => 'https://open-time.net/?q=postTitleAutonum',
+        'support'    => 'https://github.com/franck-paul/postTitleAutonum',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/postTitleAutonum/main/dcstore.xml',
     ]
 );

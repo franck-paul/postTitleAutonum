@@ -18,13 +18,13 @@ class ptaRest
 {
     private static function getTitle($title, $type = 'post')
     {
-        $strReq = 'SELECT post_title FROM ' . dcCore::app()->blog->prefix . 'post ' .
+        $strReq = 'SELECT post_title FROM ' . dcCore::app()->blog->prefix . dcBlog::POST_TABLE_NAME . ' ' .
         "WHERE post_title = '" . dcCore::app()->blog->con->escape($title) . "' " .
         "AND post_type = '" . dcCore::app()->blog->con->escape($type) . "' " .
         "AND blog_id = '" . dcCore::app()->blog->con->escape(dcCore::app()->blog->id) . "' " .
         'ORDER BY post_title DESC';
 
-        $rs = dcCore::app()->blog->con->select($strReq);
+        $rs = new dcRecord(dcCore::app()->blog->con->select($strReq));
 
         if (!$rs->isEmpty()) {
             // Try to find similar titles (beginning with)
@@ -36,20 +36,20 @@ class ptaRest
                 $clause = "LIKE '" .
                 dcCore::app()->blog->con->escape(preg_replace(['%', '_', '!'], ['!%', '!_', '!!'], $title)) . " ' ESCAPE '!'";  // @phpstan-ignore-line
             }
-            $strReq = 'SELECT post_title FROM ' . dcCore::app()->blog->prefix . 'post ' .
+            $strReq = 'SELECT post_title FROM ' . dcCore::app()->blog->prefix . dcBlog::POST_TABLE_NAME . ' ' .
             'WHERE post_title ' . $clause . ' ' .
             "AND post_type = '" . dcCore::app()->blog->con->escape($type) . "' " .
             "AND blog_id = '" . dcCore::app()->blog->con->escape(dcCore::app()->blog->id) . "' " .
             'ORDER BY post_title DESC ';
 
-            $rs = dcCore::app()->blog->con->select($strReq);
+            $rs = new dcRecord(dcCore::app()->blog->con->select($strReq));
             $a  = [];
             while ($rs->fetch()) {
                 $a[] = $rs->post_title;
             }
 
             natsort($a);
-            if (preg_match('/(.*?)([0-9]+)$/', end($a), $m)) {
+            if (preg_match('/(.*?)(\d+)$/', end($a), $m)) {
                 $i = (int) $m[2];
             } else {
                 $i = 1;

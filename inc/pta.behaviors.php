@@ -41,7 +41,7 @@ class ptaBehaviors
         return self::entryHeaders('page');
     }
 
-    public static function adminBlogPreferencesForm($core, $settings)
+    public static function adminBlogPreferencesForm($settings)
     {
         $settings->addNameSpace('pta');
         echo
