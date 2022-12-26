@@ -26,10 +26,12 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 }
 // Admin mode only
 
-dcCore::app()->addBehavior('adminBlogPreferencesFormV2', [ptaBehaviors::class, 'adminBlogPreferencesForm']);
-dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', [ptaBehaviors::class, 'adminBeforeBlogSettingsUpdate']);
+dcCore::app()->addBehaviors([
+    'adminBlogPreferencesFormV2'    => [ptaBehaviors::class, 'adminBlogPreferencesForm'],
+    'adminBeforeBlogSettingsUpdate' => [ptaBehaviors::class, 'adminBeforeBlogSettingsUpdate'],
 
-dcCore::app()->addBehavior('adminPostHeaders', [ptaBehaviors::class, 'postHeaders']);
-dcCore::app()->addBehavior('adminPageHeaders', [ptaBehaviors::class, 'pageHeaders']);
+    'adminPostHeaders'              => [ptaBehaviors::class, 'postHeaders'],
+    'adminPageHeaders'              => [ptaBehaviors::class, 'pageHeaders'],
+]);
 
 dcCore::app()->rest->addFunction('suggestTitle', [ptaRest::class, 'suggestTitle']);
