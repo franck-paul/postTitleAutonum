@@ -10,11 +10,15 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-if (!defined('DC_CONTEXT_ADMIN')) {
-    return;
-}
+declare(strict_types=1);
 
-class ptaRest
+namespace Dotclear\Plugin\postTitleAutonum;
+
+use dcBlog;
+use dcCore;
+use Dotclear\Database\MetaRecord;
+
+class BackendRest
 {
     private static function getTitle($title, $type = 'post')
     {
@@ -24,7 +28,7 @@ class ptaRest
         "AND blog_id = '" . dcCore::app()->blog->con->escape(dcCore::app()->blog->id) . "' " .
         'ORDER BY post_title DESC';
 
-        $rs = new dcRecord(dcCore::app()->blog->con->select($strReq));
+        $rs = new MetaRecord(dcCore::app()->blog->con->select($strReq));
 
         if (!$rs->isEmpty()) {
             // Try to find similar titles (beginning with)
@@ -42,7 +46,7 @@ class ptaRest
             "AND blog_id = '" . dcCore::app()->blog->con->escape(dcCore::app()->blog->id) . "' " .
             'ORDER BY post_title DESC ';
 
-            $rs = new dcRecord(dcCore::app()->blog->con->select($strReq));
+            $rs = new MetaRecord(dcCore::app()->blog->con->select($strReq));
             $a  = [];
             while ($rs->fetch()) {
                 $a[] = $rs->post_title;

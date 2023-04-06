@@ -12,33 +12,14 @@ window.addEventListener('load', () => {
     if (title === '') {
       dotclear.pta.suggest = '';
     } else {
-      dotclear.services(
+      dotclear.jsonServicesGet(
         'suggestTitle',
-        (data) => {
-          try {
-            const response = JSON.parse(data);
-            if (response?.success) {
-              if (
-                response?.payload.ret &&
-                dotclear.pta.suggest !== response.payload.suggest &&
-                window.confirm(response.payload.msg)
-              ) {
-                input.value = response.payload.suggest;
-              }
-            } else {
-              console.log(dotclear.debug && response?.message ? response.message : 'Dotclear REST server error');
-              return;
-            }
-          } catch (e) {
-            console.log(e);
+        (payload) => {
+          if (payload.ret && dotclear.pta.suggest !== payload.suggest && window.confirm(payload.msg)) {
+            input.value = payload.suggest;
           }
         },
-        (error) => {
-          console.log(error);
-        },
-        true, // Use GET method
         {
-          json: 1, // Use JSON format for payload
           type: dotclear.pta.post_type,
           title,
         },

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 postTitleAutonum module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-17 09:34+0200\n"
+"POT-Creation-Date: 2023-05-01 16:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,37 +16,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../git-plugins/postTitleAutonum/_admin.php:18
+#: ../git-plugins/postTitleAutonum/src/Backend.php:27
 msgid "Auto numbering of duplicate titles"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/_admin.php:18
-#: ../git-plugins/postTitleAutonum/inc/pta.behaviors.php:50
+#: ../git-plugins/postTitleAutonum/src/Backend.php:27
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:57
 msgid "postTitleAutonum"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/_services.php:59
-#: ../git-plugins/postTitleAutonum/inc/pta.behaviors.php:61
-msgid "number"
-msgstr ""
-
-#: ../git-plugins/postTitleAutonum/_services.php:77
-#, php-format
-msgid "The “%s” title is already used, would you replace it by “%s”?"
-msgstr ""
-
-#: ../git-plugins/postTitleAutonum/inc/pta.behaviors.php:53
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:62
 msgid "Enable auto numbering of duplicate titles"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/inc/pta.behaviors.php:56
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:67
 msgid "Use prefix before number"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/inc/pta.behaviors.php:58
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:74
 msgid "User defined prefix:"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/inc/pta.behaviors.php:61
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:77
 msgid "Leave empty to use the default prefix:"
+msgstr ""
+
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:77
+#: ../git-plugins/postTitleAutonum/src/BackendRest.php:63
+msgid "number"
+msgstr ""
+
+#: ../git-plugins/postTitleAutonum/src/BackendRest.php:80
+#, php-format
+msgid "The “%s” title is already used, would you replace it by “%s”?"
 msgstr ""

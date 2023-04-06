@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 postTitleAutonum module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-17 09:34+0200\n"
+"POT-Creation-Date: 2023-05-01 16:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,13 +22,6 @@ msgstr ""
 msgid "postTitleAutonum"
 msgstr "Auto numbering of duplicate titles"
 
-msgid "number"
-msgstr "#"
-
-#, php-format
-msgid "The “%s” title is already used, would you replace it by “%s”?"
-msgstr ""
-
 msgid "Enable auto numbering of duplicate titles"
 msgstr ""
 
@@ -39,4 +32,11 @@ msgid "User defined prefix:"
 msgstr ""
 
 msgid "Leave empty to use the default prefix:"
+msgstr ""
+
+msgid "number"
+msgstr "#"
+
+#, php-format
+msgid "The “%s” title is already used, would you replace it by “%s”?"
 msgstr ""
