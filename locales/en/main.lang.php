@@ -12,7 +12,7 @@
 use Dotclear\Helper\L10n;
 
 L10n::$locales['Auto numbering of duplicate titles'] = '';
-L10n::$locales['postTitleAutonum'] = 'Auto numbering of duplicate titles';
+L10n::$locales['postTitleAutonum'] = '';
 L10n::$locales['Enable auto numbering of duplicate titles'] = '';
 L10n::$locales['Use prefix before number'] = '';
 L10n::$locales['User defined prefix:'] = '';

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 postTitleAutonum module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 16:07+0200\n"
+"POT-Creation-Date: 2023-05-01 16:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../git-plugins/postTitleAutonum/src/Backend.php:27
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:57
 msgid "Auto numbering of duplicate titles"
 msgstr ""
 
 #: ../git-plugins/postTitleAutonum/src/Backend.php:27
-#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:57
 msgid "postTitleAutonum"
 msgstr ""
 
@@ -42,11 +42,11 @@ msgid "Leave empty to use the default prefix:"
 msgstr ""
 
 #: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:77
-#: ../git-plugins/postTitleAutonum/src/BackendRest.php:63
+#: ../git-plugins/postTitleAutonum/src/BackendRest.php:76
 msgid "number"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/src/BackendRest.php:80
+#: ../git-plugins/postTitleAutonum/src/BackendRest.php:93
 #, php-format
 msgid "The “%s” title is already used, would you replace it by “%s”?"
 msgstr ""

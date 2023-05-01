@@ -54,7 +54,7 @@ class BackendBehaviors
     {
         echo
         (new Fieldset('post_title_autonum'))
-        ->legend((new Legend(__('postTitleAutonum'))))
+        ->legend((new Legend(__('Auto numbering of duplicate titles'))))
         ->fields([
             (new Para())->items([
                 (new Checkbox('pta_enabled', $settings->pta->enabled))

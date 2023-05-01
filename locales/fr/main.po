@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 postTitleAutonum module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 16:07+0200\n"
+"POT-Creation-Date: 2023-05-01 16:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,11 +28,9 @@ msgstr "Activer la numérotation automatique des titres dupliqués"
 msgid "Use prefix before number"
 msgstr "Utiliser un préfixe devant le numéro"
 
-#, fuzzy
 msgid "User defined prefix:"
 msgstr "Préfixe :"
 
-#, fuzzy
 msgid "Leave empty to use the default prefix:"
 msgstr "Laisser vide pour utiliser le préfixe par défaut :"
 
