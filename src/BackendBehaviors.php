@@ -74,7 +74,7 @@ class BackendBehaviors
                     ->label((new Label(__('User defined prefix:'), Label::INSIDE_TEXT_BEFORE))),
             ]),
             (new Para())->items([
-                (new Text(null, __('Leave empty to use the default prefix:') . ' "' . __('number') . '"'))
+                (new Text(null, __('Leave empty to use the default prefix:') . ' "' . __('#') . '"'))
                     ->class(['clear', 'form-note']),
             ]),
         ])
