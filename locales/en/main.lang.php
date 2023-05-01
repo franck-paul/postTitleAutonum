@@ -18,5 +18,4 @@ L10n::$locales['Use prefix before number'] = '';
 L10n::$locales['User defined prefix:'] = '';
 L10n::$locales['#'] = '';
 L10n::$locales['Leave empty to use the default prefix:'] = '';
-L10n::$locales['number'] = '';
 L10n::$locales['The “%s” title is already used, would you replace it by “%s”?'] = '';
