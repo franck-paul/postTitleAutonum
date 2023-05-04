@@ -36,7 +36,7 @@ class BackendBehaviors
 
             return
             dcPage::jsJson('pta_options', $pta_options) .
-            dcPage::jsModuleLoad('postTitleAutonum/js/suggest.js', dcCore::app()->getVersion('series'));
+            dcPage::jsModuleLoad(My::id() . '/js/suggest.js', dcCore::app()->getVersion(My::id()));
         }
     }
 
