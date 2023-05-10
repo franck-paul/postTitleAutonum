@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 postTitleAutonum module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 16:56+0200\n"
+"POT-Creation-Date: 2023-05-10 18:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../git-plugins/postTitleAutonum/src/Backend.php:27
-#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:57
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:59
 msgid "Auto numbering of duplicate titles"
 msgstr ""
 
@@ -25,24 +25,24 @@ msgstr ""
 msgid "postTitleAutonum"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:62
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:64
 msgid "Enable auto numbering of duplicate titles"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:67
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:69
 msgid "Use prefix before number"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:74
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:76
 msgid "User defined prefix:"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:77
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:79
 #: ../git-plugins/postTitleAutonum/src/BackendRest.php:76
 msgid "#"
 msgstr ""
 
-#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:77
+#: ../git-plugins/postTitleAutonum/src/BackendBehaviors.php:79
 msgid "Leave empty to use the default prefix:"
 msgstr ""
 

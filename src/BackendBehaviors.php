@@ -29,7 +29,9 @@ class BackendBehaviors
 {
     private static function entryHeaders($type = 'post')
     {
-        if (dcCore::app()->blog->settings->pta->enabled) {
+        $settings = dcCore::app()->blog->settings->get(My::id());
+
+        if ($settings->enabled) {
             $pta_options = [
                 'post_type' => $type,
             ];
@@ -50,25 +52,27 @@ class BackendBehaviors
         return self::entryHeaders('page');
     }
 
-    public static function adminBlogPreferencesForm($settings)
+    public static function adminBlogPreferencesForm()
     {
+        $settings = dcCore::app()->blog->settings->get(My::id());
+
         echo
-        (new Fieldset('post_title_autonum'))
+        (new Fieldset('pta'))
         ->legend((new Legend(__('Auto numbering of duplicate titles'))))
         ->fields([
             (new Para())->items([
-                (new Checkbox('pta_enabled', $settings->pta->enabled))
+                (new Checkbox('pta_enabled', $settings->enabled))
                     ->value(1)
                     ->label((new Label(__('Enable auto numbering of duplicate titles'), Label::INSIDE_TEXT_AFTER))),
             ]),
             (new Para())->items([
-                (new Checkbox('pta_use_prefix', $settings->pta->use_prefix))
+                (new Checkbox('pta_use_prefix', $settings->use_prefix))
                     ->value(1)
                     ->label((new Label(__('Use prefix before number'), Label::INSIDE_TEXT_AFTER))),
             ]),
             (new Para())->items([
                 (new Input('pta_prefix'))
-                    ->value($settings->pta->use_prefix)
+                    ->value($settings->prefix)
                     ->size(25)
                     ->maxlength(50)
                     ->label((new Label(__('User defined prefix:'), Label::INSIDE_TEXT_BEFORE))),
@@ -81,10 +85,12 @@ class BackendBehaviors
         ->render();
     }
 
-    public static function adminBeforeBlogSettingsUpdate($settings)
+    public static function adminBeforeBlogSettingsUpdate()
     {
-        $settings->pta->put('enabled', !empty($_POST['pta_enabled']), 'boolean');
-        $settings->pta->put('use_prefix', !empty($_POST['pta_use_prefix']), 'boolean');
-        $settings->pta->put('prefix', empty($_POST['pta_prefix']) ? '' : Html::escapeHTML($_POST['pta_prefix']), 'string');
+        $settings = dcCore::app()->blog->settings->get(My::id());
+
+        $settings->put('enabled', !empty($_POST['pta_enabled']), 'boolean');
+        $settings->put('use_prefix', !empty($_POST['pta_use_prefix']), 'boolean');
+        $settings->put('prefix', empty($_POST['pta_prefix']) ? '' : Html::escapeHTML($_POST['pta_prefix']), 'string');
     }
 }

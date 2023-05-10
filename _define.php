@@ -14,7 +14,7 @@ $this->registerModule(
     'postTitleAutonum',
     'Auto numbering of duplicate titles',
     'Franck Paul',
-    '2.1.1',
+    '2.2',
     [
         'requires'    => [['core', '2.26']],
         'permissions' => dcCore::app()->auth->makePermissions([

@@ -73,7 +73,9 @@ class BackendRest
             }
 
             if ($i > 0) {
-                $prefix = dcCore::app()->blog->settings->pta->use_prefix ? (dcCore::app()->blog->settings->pta->prefix ?: __('#')) : '';
+                $settings = dcCore::app()->blog->settings->get(My::id());
+                $prefix   = $settings->use_prefix ? ($settings->prefix ?: __('#')) : '';
+
                 $title .= ' ' . $prefix . ($i + 1);
             }
         }
