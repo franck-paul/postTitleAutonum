@@ -48,8 +48,6 @@ class Install extends dcNsProcess
             $settings->put('enabled', false, 'boolean', 'Active', false, true);
             $settings->put('use_prefix', false, 'boolean', 'Use prefix', false, true);
             $settings->put('prefix', '', 'string', 'Prefix', false, true);
-
-            return true;
         } catch (Exception $e) {
             dcCore::app()->error->add($e->getMessage());
         }
