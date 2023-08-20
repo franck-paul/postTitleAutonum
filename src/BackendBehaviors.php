@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\postTitleAutonum;
 
 use dcCore;
-use dcPage;
+use Dotclear\Core\Backend\Page;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Input;
@@ -37,8 +37,8 @@ class BackendBehaviors
             ];
 
             return
-            dcPage::jsJson('pta_options', $pta_options) .
-            dcPage::jsModuleLoad(My::id() . '/js/suggest.js', dcCore::app()->getVersion(My::id()));
+            Page::jsJson('pta_options', $pta_options) .
+            My::jsLoad('suggest.js');
         }
     }
 
