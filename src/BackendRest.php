@@ -73,7 +73,7 @@ class BackendRest
             }
 
             if ($i > 0) {
-                $settings = dcCore::app()->blog->settings->get(My::id());
+                $settings = My::settings();
                 $prefix   = $settings->use_prefix ? ($settings->prefix ?: __('#')) : '';
 
                 $title .= ' ' . $prefix . ($i + 1);

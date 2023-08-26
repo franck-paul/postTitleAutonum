@@ -41,7 +41,7 @@ class Install extends Process
                 }
             }
 
-            $settings = dcCore::app()->blog->settings->get(My::id());
+            $settings = My::settings();
 
             $settings->put('enabled', false, 'boolean', 'Active', false, true);
             $settings->put('use_prefix', false, 'boolean', 'Use prefix', false, true);

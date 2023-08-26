@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\postTitleAutonum;
 
-use dcCore;
 use Dotclear\Core\Backend\Page;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
@@ -29,7 +28,7 @@ class BackendBehaviors
 {
     private static function entryHeaders($type = 'post')
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         if ($settings->enabled) {
             $pta_options = [
@@ -54,7 +53,7 @@ class BackendBehaviors
 
     public static function adminBlogPreferencesForm()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         echo
         (new Fieldset('pta'))
@@ -87,7 +86,7 @@ class BackendBehaviors
 
     public static function adminBeforeBlogSettingsUpdate()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         $settings->put('enabled', !empty($_POST['pta_enabled']), 'boolean');
         $settings->put('use_prefix', !empty($_POST['pta_use_prefix']), 'boolean');
