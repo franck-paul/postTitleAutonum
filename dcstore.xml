@@ -1,11 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="postTitleAutonum">
     <name>postTitleAutonum</name>
-    <version>2.3.2</version>
+    <version>3.0</version>
     <author>Franck Paul</author>
     <desc>Auto numbering of duplicate titles</desc>
-    <file>https://github.com/franck-paul/postTitleAutonum/releases/download/2.3.2/plugin-postTitleAutonum-2.3.2.zip</file>
-    <da:dcmin>2.26</da:dcmin>
+    <file>https://github.com/franck-paul/postTitleAutonum/releases/download/3.0/plugin-postTitleAutonum-3.0.zip</file>
+    <da:dcmin>2.27</da:dcmin>
     <da:details>https://open-time.net/?q=postTitleAutonum</da:details>
     <da:support>https://github.com/franck-paul/postTitleAutonum</da:support>
   </module>
