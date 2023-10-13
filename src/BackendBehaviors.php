@@ -26,7 +26,7 @@ use Dotclear\Helper\Html\Html;
 
 class BackendBehaviors
 {
-    private static function entryHeaders($type = 'post')
+    private static function entryHeaders(string $type = 'post'): string
     {
         $settings = My::settings();
 
@@ -39,19 +39,21 @@ class BackendBehaviors
             Page::jsJson('pta_options', $pta_options) .
             My::jsLoad('suggest.js');
         }
+
+        return '';
     }
 
-    public static function postHeaders()
+    public static function postHeaders(): string
     {
         return self::entryHeaders('post');
     }
 
-    public static function pageHeaders()
+    public static function pageHeaders(): string
     {
         return self::entryHeaders('page');
     }
 
-    public static function adminBlogPreferencesForm()
+    public static function adminBlogPreferencesForm(): string
     {
         $settings = My::settings();
 
@@ -82,14 +84,18 @@ class BackendBehaviors
             ]),
         ])
         ->render();
+
+        return '';
     }
 
-    public static function adminBeforeBlogSettingsUpdate()
+    public static function adminBeforeBlogSettingsUpdate(): string
     {
         $settings = My::settings();
 
         $settings->put('enabled', !empty($_POST['pta_enabled']), 'boolean');
         $settings->put('use_prefix', !empty($_POST['pta_use_prefix']), 'boolean');
         $settings->put('prefix', empty($_POST['pta_prefix']) ? '' : Html::escapeHTML($_POST['pta_prefix']), 'string');
+
+        return '';
     }
 }

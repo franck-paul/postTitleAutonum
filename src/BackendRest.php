@@ -20,7 +20,7 @@ use Dotclear\Database\Statement\SelectStatement;
 
 class BackendRest
 {
-    private static function getTitle($title, $type = 'post')
+    private static function getTitle(string $title, string $type = 'post'): string
     {
         $sql = new SelectStatement();
         $sql
@@ -83,7 +83,12 @@ class BackendRest
         return $title;
     }
 
-    public static function suggestTitle($get)
+    /**
+     * @param      array<string, string>   $get    The cleaned $_GET
+     *
+     * @return     array<string, mixed>
+     */
+    public static function suggestTitle($get): array
     {
         $title = $get['title'] ?? '';
         $type  = $get['type']  ?? 'post';
