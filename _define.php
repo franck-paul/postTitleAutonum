@@ -17,11 +17,9 @@ $this->registerModule(
     '3.0',
     [
         'requires'    => [['core', '2.28']],
-        'permissions' => dcCore::app()->auth->makePermissions([
-            dcAuth::PERMISSION_ADMIN,
-        ]),
-        'type'     => 'plugin',
-        'settings' => ['blog' => '#params.pta'],
+        'permissions' => 'My',
+        'type'        => 'plugin',
+        'settings'    => ['blog' => '#params.pta'],
 
         'details'    => 'https://open-time.net/?q=postTitleAutonum',
         'support'    => 'https://github.com/franck-paul/postTitleAutonum',

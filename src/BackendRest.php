@@ -14,10 +14,9 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\postTitleAutonum;
 
-use dcBlog;
-use dcCore;
 use Dotclear\App;
 use Dotclear\Database\Statement\SelectStatement;
+use Dotclear\Interface\Core\BlogInterface;
 
 class BackendRest
 {
@@ -26,7 +25,7 @@ class BackendRest
         $sql = new SelectStatement();
         $sql
             ->column('post_title')
-            ->from(App::con()->prefix() . dcBlog::POST_TABLE_NAME)
+            ->from(App::con()->prefix() . BlogInterface::POST_TABLE_NAME)
             ->where('post_title = ' . $sql->quote($title))
             ->and('post_type = ' . $sql->quote($type))
             ->and('blog_id = ' . $sql->quote(App::blog()->id()))
@@ -38,10 +37,10 @@ class BackendRest
             $sql = new SelectStatement();
 
             // Try to find similar titles (beginning with, including a space)
-            if (dcCore::app()->con->syntax() == 'mysql') {
+            if (App::con()->syntax() == 'mysql') {
                 // MySQL
                 $clause = "REGEXP '^" . $sql->escape(preg_quote($title)) . " '";
-            } elseif (dcCore::app()->con->syntax() == 'postgresql') {
+            } elseif (App::con()->syntax() == 'postgresql') {
                 // PostgreSQL
                 $clause = "~ '^" . $sql->escape(preg_quote($title)) . " '";
             } else {
@@ -52,7 +51,7 @@ class BackendRest
 
             $sql
                 ->column('post_title')
-                ->from(App::con()->prefix() . dcBlog::POST_TABLE_NAME)
+                ->from(App::con()->prefix() . BlogInterface::POST_TABLE_NAME)
                 ->where('post_title ' . $clause)
                 ->and('post_type = ' . $sql->quote($type))
                 ->and('blog_id = ' . $sql->quote(App::blog()->id()))

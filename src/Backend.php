@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\postTitleAutonum;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Core\Process;
 
 class Backend extends Process
@@ -33,7 +33,7 @@ class Backend extends Process
             return false;
         }
 
-        dcCore::app()->addBehaviors([
+        App::behavior()->addBehaviors([
             'adminBlogPreferencesFormV2'    => BackendBehaviors::adminBlogPreferencesForm(...),
             'adminBeforeBlogSettingsUpdate' => BackendBehaviors::adminBeforeBlogSettingsUpdate(...),
 
@@ -41,7 +41,7 @@ class Backend extends Process
             'adminPageHeaders' => BackendBehaviors::pageHeaders(...),
         ]);
 
-        dcCore::app()->rest->addFunction('suggestTitle', BackendRest::suggestTitle(...));
+        App::rest()->addFunction('suggestTitle', BackendRest::suggestTitle(...));
 
         return true;
     }
