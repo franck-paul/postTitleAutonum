@@ -16,7 +16,6 @@ namespace Dotclear\Plugin\postTitleAutonum;
 
 use Dotclear\App;
 use Dotclear\Database\Statement\SelectStatement;
-use Dotclear\Interface\Core\BlogInterface;
 
 class BackendRest
 {
@@ -25,7 +24,7 @@ class BackendRest
         $sql = new SelectStatement();
         $sql
             ->column('post_title')
-            ->from(App::con()->prefix() . BlogInterface::POST_TABLE_NAME)
+            ->from(App::con()->prefix() . App::blog()::POST_TABLE_NAME)
             ->where('post_title = ' . $sql->quote($title))
             ->and('post_type = ' . $sql->quote($type))
             ->and('blog_id = ' . $sql->quote(App::blog()->id()))
@@ -51,7 +50,7 @@ class BackendRest
 
             $sql
                 ->column('post_title')
-                ->from(App::con()->prefix() . BlogInterface::POST_TABLE_NAME)
+                ->from(App::con()->prefix() . App::blog()::POST_TABLE_NAME)
                 ->where('post_title ' . $clause)
                 ->and('post_type = ' . $sql->quote($type))
                 ->and('blog_id = ' . $sql->quote(App::blog()->id()))
