@@ -45,7 +45,7 @@ class BackendRest
             } else {
                 // SQlite
                 $clause = "LIKE '" .
-                $sql->escape(preg_replace(['%', '_', '!'], ['!%', '!_', '!!'], $title)) . " ' ESCAPE '!'";  // @phpstan-ignore-line
+                $sql->escape((string) preg_replace(['/\%/', '/\_/', '/\!/'], ['!%', '!_', '!!'], $title)) . " ' ESCAPE '!'";
             }
 
             $sql
