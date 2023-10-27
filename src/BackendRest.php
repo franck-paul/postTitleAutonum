@@ -66,7 +66,7 @@ class BackendRest
             }
 
             $i = 1;
-            if (count($a)) {
+            if ($a !== []) {
                 natsort($a);
                 if (preg_match('/(.*?)(\d+)$/', end($a), $m)) {
                     $i = (int) $m[2];
