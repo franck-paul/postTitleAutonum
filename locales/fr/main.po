@@ -1,10 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # This file is put in the public domain.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Franck Paul <carnet.franck.paul@gmail.com>, 2023
-#
+# Franck Paul <carnet.franck.paul@gmail.com>, 2025
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -12,12 +12,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-27 16:19+0200\n"
 "PO-Revision-Date: 2023-05-01 14:53+0000\n"
-"Last-Translator: Franck Paul <carnet.franck.paul@gmail.com>, 2023\n"
+"Last-Translator: Franck Paul <carnet.franck.paul@gmail.com>, 2025\n"
 "Language-Team: French (https://app.transifex.com/open-time/teams/109573/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 msgid "postTitleAutonum"
@@ -41,6 +41,6 @@ msgstr "n° "
 msgid "Leave empty to use the default prefix:"
 msgstr "Laisser vide pour utiliser le préfixe par défaut :"
 
-#, fuzzy, php-format
+#, php-format
 msgid "The “%1$s” title is already used, would you replace it by “%2$s”?"
-msgstr "Le titre « %s » est déjà utilisé, voulez-vous le remplacer par « %s » ?"
+msgstr "Le titre \"%1$s\" est déjà utilisé, le remplaceriez-vous par \"%2$s\" ?"
