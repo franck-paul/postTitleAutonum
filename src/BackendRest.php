@@ -99,7 +99,7 @@ class BackendRest
 
         return [
             'ret'     => ($title !== $suggest),
-            'msg'     => sprintf(__('The “%s” title is already used, would you replace it by “%s”?'), $title, $suggest),
+            'msg'     => sprintf(__('The “%1$s” title is already used, would you replace it by “%2$s”?'), $title, $suggest),
             'suggest' => $suggest,
         ];
     }

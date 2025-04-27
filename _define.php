@@ -26,5 +26,6 @@ $this->registerModule(
         'details'    => 'https://open-time.net/?q=postTitleAutonum',
         'support'    => 'https://github.com/franck-paul/postTitleAutonum',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/postTitleAutonum/main/dcstore.xml',
+        'license'    => 'gpl2',
     ]
 );
