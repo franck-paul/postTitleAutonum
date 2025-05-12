@@ -18,7 +18,7 @@ $this->registerModule(
     '4.3',
     [
         'date'        => '2025-04-27T16:23:04+0200',
-        'requires'    => [['core', '2.28']],
+        'requires'    => [['core', '2.33']],
         'permissions' => 'My',
         'type'        => 'plugin',
         'settings'    => ['blog' => '#params.pta'],

@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
       dotclear.jsonServicesGet(
         'suggestTitle',
         (payload) => {
-          if (payload.ret && dotclear.pta.suggest !== payload.suggest && window.confirm(payload.msg)) {
+          if (payload.ret && dotclear.pta.suggest !== payload.suggest && dotclear.confirm(payload.msg)) {
             input.value = payload.suggest;
           }
         },
