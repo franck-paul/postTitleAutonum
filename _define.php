@@ -15,9 +15,9 @@ $this->registerModule(
     'postTitleAutonum',
     'Auto numbering of duplicate titles',
     'Franck Paul',
-    '5.0',
+    '6.0',
     [
-        'date'        => '2025-05-12T09:56:04+0200',
+        'date'        => '2025-09-07T15:51:27+0200',
         'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'type'        => 'plugin',
