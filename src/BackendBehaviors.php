@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief postTitleAutonum, a plugin for Dotclear 2
  *
@@ -14,7 +15,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\postTitleAutonum;
 
-use Dotclear\Core\Backend\Page;
+use Dotclear\App;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Input;
@@ -36,7 +37,7 @@ class BackendBehaviors
             ];
 
             return
-            Page::jsJson('pta_options', $pta_options) .
+            App::backend()->page()->jsJson('pta_options', $pta_options) .
             My::jsLoad('suggest.js');
         }
 
