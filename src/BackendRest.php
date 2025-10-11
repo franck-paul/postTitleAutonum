@@ -90,7 +90,7 @@ class BackendRest
      *
      * @return     array<string, mixed>
      */
-    public static function suggestTitle($get): array
+    public static function suggestTitle(array $get): array
     {
         $title = $get['title'] ?? '';
         $type  = $get['type']  ?? 'post';
