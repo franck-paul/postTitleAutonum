@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
 
   const input = document.querySelector('#post_title');
 
-  input.onblur = () => {
+  input.addEventListener('blur', () => {
     const title = input.value;
     if (title === '') {
       dotclear.pta.suggest = '';
@@ -25,5 +25,5 @@ window.addEventListener('load', () => {
         },
       );
     }
-  };
+  });
 });
