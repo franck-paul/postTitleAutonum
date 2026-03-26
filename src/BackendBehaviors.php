@@ -58,23 +58,27 @@ class BackendBehaviors
     {
         $settings = My::settings();
 
+        $enabled    = is_bool($enabled = $settings->enabled)       && $enabled;
+        $use_prefix = is_bool($use_prefix = $settings->use_prefix) && $use_prefix;
+        $prefix     = is_string($prefix = $settings->prefix) ? $prefix : '';
+
         echo
         (new Fieldset('pta'))
         ->legend((new Legend(__('Auto numbering of duplicate titles'))))
         ->fields([
             (new Para())->items([
-                (new Checkbox('pta_enabled', $settings->enabled))
+                (new Checkbox('pta_enabled', $enabled))
                     ->value(1)
                     ->label((new Label(__('Enable auto numbering of duplicate titles'), Label::INSIDE_TEXT_AFTER))),
             ]),
             (new Para())->items([
-                (new Checkbox('pta_use_prefix', $settings->use_prefix))
+                (new Checkbox('pta_use_prefix', $use_prefix))
                     ->value(1)
                     ->label((new Label(__('Use prefix before number'), Label::INSIDE_TEXT_AFTER))),
             ]),
             (new Para())->items([
                 (new Input('pta_prefix'))
-                    ->value($settings->prefix)
+                    ->value($prefix)
                     ->size(25)
                     ->maxlength(50)
                     ->label((new Label(__('User defined prefix:'), Label::INSIDE_TEXT_BEFORE))),
@@ -93,9 +97,11 @@ class BackendBehaviors
     {
         $settings = My::settings();
 
+        $prefix = isset($_POST['pta_prefix']) && is_string($prefix = $_POST['pta_prefix']) ? $prefix : '';
+
         $settings->put('enabled', !empty($_POST['pta_enabled']), 'boolean');
         $settings->put('use_prefix', !empty($_POST['pta_use_prefix']), 'boolean');
-        $settings->put('prefix', empty($_POST['pta_prefix']) ? '' : Html::escapeHTML($_POST['pta_prefix']), 'string');
+        $settings->put('prefix', empty($_POST['pta_prefix']) ? '' : Html::escapeHTML($prefix), 'string');
 
         return '';
     }

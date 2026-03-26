@@ -59,10 +59,16 @@ class BackendRest
             ;
 
             $rs = $sql->select();
-            $a  = [];
+            /**
+             * @var array<string>
+             */
+            $a = [];
             if ($rs) {
                 while ($rs->fetch()) {
-                    $a[] = $rs->post_title;
+                    $post_title = is_string($post_title = $rs->post_title) ? $post_title : '';
+                    if ($post_title !== '') {
+                        $a[] = $post_title;
+                    }
                 }
             }
 
@@ -76,7 +82,13 @@ class BackendRest
 
             if ($i > 0) {
                 $settings = My::settings();
-                $prefix   = $settings->use_prefix ? ($settings->prefix ?: __('#')) : '';
+                $prefix   = '';
+                if ($settings->use_prefix) {
+                    $prefix = is_string($prefix = $settings->prefix) ? $prefix : '';
+                    if ($prefix === '') {
+                        $prefix = __('#');
+                    }
+                }
 
                 $title .= ' ' . $prefix . ($i + 1);
             }
