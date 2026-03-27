@@ -75,7 +75,7 @@ class BackendRest
             $i = 1;
             if ($a !== []) {
                 natsort($a);
-                if (preg_match('/(.*?)(\d+)$/', (string) end($a), $m)) {
+                if (preg_match('/(.*?)(\d+)$/', end($a), $m)) {
                     $i = (int) $m[2];
                 }
             }
