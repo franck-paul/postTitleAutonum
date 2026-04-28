@@ -44,9 +44,9 @@ class Install
 
             $settings = My::settings();
 
-            $settings->put('enabled', false, 'boolean', 'Active', false, true);
-            $settings->put('use_prefix', false, 'boolean', 'Use prefix', false, true);
-            $settings->put('prefix', '', 'string', 'Prefix', false, true);
+            $settings->put('enabled', false, App::blogWorkspace()::NS_BOOL, 'Active', false, true);
+            $settings->put('use_prefix', false, App::blogWorkspace()::NS_BOOL, 'Use prefix', false, true);
+            $settings->put('prefix', '', App::blogWorkspace()::NS_STRING, 'Prefix', false, true);
         } catch (Exception $exception) {
             App::error()->add($exception->getMessage());
         }

@@ -99,9 +99,9 @@ class BackendBehaviors
 
         $prefix = isset($_POST['pta_prefix']) && is_string($prefix = $_POST['pta_prefix']) ? $prefix : '';
 
-        $settings->put('enabled', !empty($_POST['pta_enabled']), 'boolean');
-        $settings->put('use_prefix', !empty($_POST['pta_use_prefix']), 'boolean');
-        $settings->put('prefix', empty($_POST['pta_prefix']) ? '' : Html::escapeHTML($prefix), 'string');
+        $settings->put('enabled', !empty($_POST['pta_enabled']), App::blogWorkspace()::NS_BOOL);
+        $settings->put('use_prefix', !empty($_POST['pta_use_prefix']), App::blogWorkspace()::NS_BOOL);
+        $settings->put('prefix', empty($_POST['pta_prefix']) ? '' : Html::escapeHTML($prefix), App::blogWorkspace()::NS_STRING);
 
         return '';
     }
