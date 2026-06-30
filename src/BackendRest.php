@@ -65,7 +65,7 @@ class BackendRest
             $a = [];
             if ($rs) {
                 while ($rs->fetch()) {
-                    $post_title = is_string($post_title = $rs->post_title) ? $post_title : '';
+                    $post_title = $rs->strField('post_title');
                     if ($post_title !== '') {
                         $a[] = $post_title;
                     }
