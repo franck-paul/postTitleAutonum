@@ -83,8 +83,8 @@ class BackendRest
             if ($i > 0) {
                 $settings = My::settings();
                 $prefix   = '';
-                if ($settings->use_prefix) {
-                    $prefix = is_string($prefix = $settings->prefix) ? $prefix : '';
+                if ($settings->getBool('use_prefix')) {
+                    $prefix = $settings->getStr('prefix', false);
                     if ($prefix === '') {
                         $prefix = __('#');
                     }

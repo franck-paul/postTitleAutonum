@@ -31,7 +31,7 @@ class BackendBehaviors
     {
         $settings = My::settings();
 
-        if ($settings->enabled) {
+        if ($settings->getBool('enabled')) {
             $pta_options = [
                 'post_type' => $type,
             ];
@@ -58,9 +58,9 @@ class BackendBehaviors
     {
         $settings = My::settings();
 
-        $enabled    = is_bool($enabled = $settings->enabled)       && $enabled;
-        $use_prefix = is_bool($use_prefix = $settings->use_prefix) && $use_prefix;
-        $prefix     = is_string($prefix = $settings->prefix) ? $prefix : '';
+        $enabled    = $settings->getBool('enabled', false);
+        $use_prefix = $settings->getBool('use_prefix', false);
+        $prefix     = $settings->getStr('prefix', false);
 
         echo
         (new Fieldset('pta'))
