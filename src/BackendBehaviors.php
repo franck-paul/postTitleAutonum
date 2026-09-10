@@ -21,8 +21,8 @@ use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Input;
 use Dotclear\Helper\Html\Form\Label;
 use Dotclear\Helper\Html\Form\Legend;
+use Dotclear\Helper\Html\Form\Note;
 use Dotclear\Helper\Html\Form\Para;
-use Dotclear\Helper\Html\Form\Text;
 use Dotclear\Helper\Html\Html;
 
 class BackendBehaviors
@@ -83,10 +83,9 @@ class BackendBehaviors
                     ->maxlength(50)
                     ->label((new Label(__('User defined prefix:'), Label::INSIDE_TEXT_BEFORE))),
             ]),
-            (new Para())->items([
-                (new Text(null, __('Leave empty to use the default prefix:') . ' "' . __('#') . '"'))
-                    ->class(['clear', 'form-note']),
-            ]),
+            (new Note())
+                ->class('form-note')
+                ->text(__('Leave empty to use the default prefix:') . ' "' . __('#') . '"'),
         ])
         ->render();
 
