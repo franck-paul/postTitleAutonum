@@ -3,7 +3,7 @@ postTitleAutonum plugin for Dotclear 2
 [![Release](https://img.shields.io/github/v/release/franck-paul/postTitleAutonum)](https://github.com/franck-paul/postTitleAutonum/releases)
 [![Date](https://img.shields.io/github/release-date/franck-paul/postTitleAutonum)](https://github.com/franck-paul/postTitleAutonum/releases)
 [![Issues](https://img.shields.io/github/issues/franck-paul/postTitleAutonum)](https://github.com/franck-paul/postTitleAutonum/issues)
-[![License](https://img.shields.io/github/license/franck-paul/postTitleAutonum)](https://github.com/franck-paul/postTitleAutonum/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/franck-paul/postTitleAutonum)](https://github.com/franck-paul/postTitleAutonum/blob/main/LICENSE)
 
 ============================
 
