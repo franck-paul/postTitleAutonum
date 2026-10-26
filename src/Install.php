@@ -37,7 +37,7 @@ class Install
         try {
             $old_version = App::version()->getVersion(My::id());
             // Rename settings namespace
-            if (version_compare((string) $old_version, '3.2', '<') && App::blog()->settings()->exists('pta')) {
+            if (version_compare($old_version, '3.2', '<') && App::blog()->settings()->exists('pta')) {
                 App::blog()->settings()->delWorkspace(My::id());
                 App::blog()->settings()->renWorkspace('pta', My::id());
             }
