@@ -37,10 +37,10 @@ class BackendRest
             $sql = new SelectStatement();
 
             // Try to find similar titles (beginning with, including a space)
-            if (App::db()->con()->syntax() == 'mysql') {
+            if (App::db()->con()->syntax() === 'mysql') {
                 // MySQL
                 $clause = "REGEXP '^" . $sql->escape(preg_quote($title)) . " '";
-            } elseif (App::db()->con()->syntax() == 'postgresql') {
+            } elseif (App::db()->con()->syntax() === 'postgresql') {
                 // PostgreSQL
                 $clause = "~ '^" . $sql->escape(preg_quote($title)) . " '";
             } else {
