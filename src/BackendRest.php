@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\postTitleAutonum;
 
 use Dotclear\App;
+use Dotclear\Database\MetaRecord;
 use Dotclear\Database\Statement\SelectStatement;
 
 class BackendRest
@@ -33,7 +34,7 @@ class BackendRest
         ;
 
         $rs = $sql->select();
-        if ($rs && !$rs->isEmpty()) {
+        if ($rs instanceof MetaRecord && !$rs->isEmpty()) {
             $sql = new SelectStatement();
 
             // Try to find similar titles (beginning with, including a space)
@@ -63,7 +64,7 @@ class BackendRest
              * @var array<string>
              */
             $a = [];
-            if ($rs) {
+            if ($rs instanceof MetaRecord) {
                 while ($rs->fetch()) {
                     $post_title = $rs->strField('post_title');
                     if ($post_title !== '') {
@@ -75,7 +76,7 @@ class BackendRest
             $i = 1;
             if ($a !== []) {
                 natsort($a);
-                if (preg_match('/(.*?)(\d+)$/', end($a), $m)) {
+                if ((bool) preg_match('/(.*?)(\d+)$/', end($a), $m)) {
                     $i = (int) $m[2];
                 }
             }
@@ -83,7 +84,7 @@ class BackendRest
             if ($i > 0) {
                 $settings = My::settings();
                 $prefix   = '';
-                if ($settings->getBool('use_prefix')) {
+                if ($settings->getBool('use_prefix', false)) {
                     $prefix = $settings->getStr('prefix', false);
                     if ($prefix === '') {
                         $prefix = __('#');

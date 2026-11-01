@@ -31,7 +31,7 @@ class BackendBehaviors
     {
         $settings = My::settings();
 
-        if ($settings->getBool('enabled')) {
+        if ($settings->getBool('enabled', false)) {
             $pta_options = [
                 'post_type' => $type,
             ];
