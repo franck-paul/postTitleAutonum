@@ -18,9 +18,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'postTitleAutonum',
         'Auto numbering of duplicate titles',
         'Franck Paul',
-        '7.0',
+        '7.1',
         [
-            'date'        => '2026-08-03T10:08:46+0200',
+            'date'        => '2026-11-07T17:05:44+0100',
             'requires'    => [['core', '2.39']],
             'permissions' => 'My',
             'type'        => 'plugin',
